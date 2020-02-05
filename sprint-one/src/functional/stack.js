@@ -5,13 +5,30 @@ var Stack = function() {
   var storage = {};
 
   // Implement the methods below
+    var counter = 0;
   someInstance.push = function(value) {
+    storage[counter] = value;
+    counter++;
   };
 
   someInstance.pop = function() {
+    delete storage[counter]
+    if (counter === 0){
+      counter = 0;
+    }else{
+        counter--;
+    }
+    return storage[counter];
   };
 
-  someInstance.size = function() {
+  someInstance.size = function(obj) {
+    var largest = counter;
+    for (var key in obj){
+      if (key > largest){
+        largest = key;
+      }
+    }
+    return largest;
   };
 
   return someInstance;
