@@ -22,13 +22,8 @@ var Stack = function() {
   };
 
   someInstance.size = function(obj) {
-    var largest = counter;
-    for (var key in obj){
-      if (key > largest){
-        largest = key;
-      }
-    }
-    return largest;
+
+    return counter;
   };
 
   return someInstance;
