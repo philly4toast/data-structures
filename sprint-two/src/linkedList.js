@@ -3,13 +3,35 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
 
-  list.addToTail = function(value) {
+list.addToTail = function(value) {
+  let newNode = new Node(value);
+    if (!this.tail) {
+      this.tail = newNode;
+      this.head = newNode;
+    }
+    this.tail.next = newNode;
+    this.tail = this.tail.next;
+    return this.tail.value;
   };
 
   list.removeHead = function() {
+    let headValue = this.head.value;
+    this.head = this.head.next;
+
+    return headValue;
   };
 
   list.contains = function(target) {
+    var currentPos = this.head;
+
+    while (currentPos) {
+      if (currentPos.value === target) {
+        return true;
+      } else {
+        currentPos = currentPos.next;
+      }
+    }
+    return false;
   };
 
   return list;
@@ -17,7 +39,6 @@ var LinkedList = function() {
 
 var Node = function(value) {
   var node = {};
-
   node.value = value;
   node.next = null;
 
